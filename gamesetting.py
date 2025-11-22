@@ -1,6 +1,6 @@
 #This is gamesetting.py - contains global settings for the Bomberman game
 
-SCREENWIDTH = 1343
+SCREENWIDTH = 1343         #1343
 SCREENHEIGHT = 832
 
 
@@ -8,13 +8,17 @@ SCREENHEIGHT = 832
 # GAME FRAMES PER SECONDS
 FPS = 60
 
+# Y COORDINATE OFFSET FOR SPRITES
+Y_OFFSET = 92
+
+
 # ACTUAL SPRITE SIZE FROM YOUR SHEET
 SPRITE_WIDTH = 32   # Most common size for this style
 SPRITE_HEIGHT = 32
 
 # TILE SIZE FROM YOUR TILE SHEET
-TILE_WIDTH = 15.9
-TILE_HEIGHT = 16
+TILE_WIDTH = 32
+TILE_HEIGHT = 32
 
 # GAME MATRIX 
 SIZE = 64  # SIZE OF EACH TILE IN PIXELS
@@ -67,5 +71,7 @@ PLAYER = {
     "sleep_anim": [(5, 0), (5, 1), (5, 2), (5, 3), (5, 4)],
 }
 
-HARD_BLOCK = {"hard_block":[(0,2)]}
-SOFT_BLOCK = {"soft_block":[(0,0)]}
+#HARD_BLOCK = {"hard_block":[(0,2)]}
+HARD_BLOCK = {"hard_block":[(0.2,1.2)]}
+
+SOFT_BLOCK = {"soft_block":[(10.6,0)]}
