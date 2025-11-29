@@ -33,7 +33,7 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
-GREY = (128, 128, 128)
+GREY = (188, 188, 188)
 ORANGE = (255, 165, 0)
 PURPLE = (128, 0, 128)
 BROWN = (165, 42, 42)
@@ -42,6 +42,13 @@ CYAN = (0, 255, 255)
 LIGHTGREEN = (144, 238, 144)
 DARKGREY = (64, 64, 64)
 LIGHTGREY = (192, 192, 192)
+
+#COLOR PALLETE
+YELLOW_WHITE = (254,255,211)
+PITCH_RED = (219,76,76)
+YELLOWISH = (253, 228, 188)
+PURPLEISH = (95,107,210)
+DARK_RED = (97,25,19)
 
 # SPRITE COORDINATES
 
@@ -72,6 +79,6 @@ PLAYER = {
 }
 
 #HARD_BLOCK = {"hard_block":[(0,2)]}
-HARD_BLOCK = {"hard_block":[(0.2,1.2)]}
-
-SOFT_BLOCK = {"soft_block":[(10.6,0)]}
+#HARD_BLOCK = {"hard_block":[(0,1)]} #before  [(0.2,1.2)]}
+HARD_BLOCK = {"hard_block":[(0,1)]}
+SOFT_BLOCK = {"soft_block":[(0,7)]} #block for purple soft block [(0,7]}
