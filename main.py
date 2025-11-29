@@ -21,7 +21,7 @@ class Bomberman:
     # 4. Create an instance of the Assets class to load and manage all game resources
     self.ASSETS = Assets()
     # 5. Create the main Game object
-    #    It passes 'self' (the main Bomberman instance) and the Assets object for the Game class to use
+    #    It passes 'self' (the main Bomberman indstance) and the Assets object for the Game class to use
     self.GAME = Game(self, self.ASSETS)
     # 6. Create a Clock object to manage the game's frame rate (FPS)
     self.FPS = pygame.time.Clock()
