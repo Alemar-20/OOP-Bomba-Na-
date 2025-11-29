@@ -6,6 +6,9 @@ class Blocks(pygame.sprite.Sprite):
   def __init__(self,game,images,group,row_number,col_number):
     super().__init__(group)
     self.GAME = game
+    self.y_offset = gs.Y_OFFSET
+    # self.passable = False #this one is temporary. Will be used for collision detection later.
+
 
     # BLOCK POSITION
     self.row = row_number
@@ -18,7 +21,7 @@ class Blocks(pygame.sprite.Sprite):
 
     # Coordinates of block
     self.x = self.col * self.size
-    self.y = self.row * self.size
+    self.y = (self.row * self.size) + self.y_offset
 
     # Atrributes
     self.passable = False
@@ -43,3 +46,12 @@ class Blocks(pygame.sprite.Sprite):
 class Hard_block(Blocks):
   def __init__ (self, game, images, group, row_number, col_number):
     super().__init__(game, images, group, row_number, col_number)
+
+
+
+class Soft_Block(Blocks):
+  def __init__ (self,game,images,group,row_num, col_num):
+        super().__init__(game, images, group, row_num, col_num)
+
+  def __repr__(self):
+    return "'@'"
