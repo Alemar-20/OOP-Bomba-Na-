@@ -7,7 +7,7 @@ class Assets:
     def __init__(self):
         # DO NOT SCALE the sprite sheet if it's already the correct size (325x257)
         # Assuming "owncreation.png" is the 325x257 image
-        self.sprite_sheet = self.load_sprite_sheet("images", "owncreation.png") # Removed hardcoded size
+        self.sprite_sheet = self.load_sprite_sheet("images", "owncreation.png") # Removed hardcoded size | THIS IS FOR CHARACTER
         #self.sprite_sheet = self.load_sprite_sheet("images","BombermanNES2-tiles.png")
         self.player_char = self.load_sprite_range(
             gs.PLAYER, 
@@ -19,7 +19,8 @@ class Assets:
             resize=True # Added resize to scale it up to a visible game size, e.g., 32x32
         )
 
-        self.sprite_sheet = self.load_sprite_sheet("images", "BombermanPCE-tiles.png") # Removed hardcoded size
+        #self.sprite_sheet = self.load_sprite_sheet("images", "BombermanPCE-tiles.png") # Removed hardcoded size
+        self.sprite_sheet = self.load_sprite_sheet("images", "sprite_sheet (1).png") # Removed hardcoded size | THIS IS FOR BLOCKS
         self.hard_block = self.load_sprite_range(
             gs.HARD_BLOCK, 
             self.sprite_sheet, 
@@ -28,7 +29,27 @@ class Assets:
             width=gs.TILE_WIDTH - 1,
             height=gs.TILE_HEIGHT,
             resize=True
+            
         )
+
+        self.soft_block = self.load_sprite_range(
+            gs.SOFT_BLOCK, # Use the coordinates defined in gamesetting
+            self.sprite_sheet, # Use the same sprite sheet
+            row=gs.TILE_HEIGHT, 
+            col=gs.TILE_WIDTH, 
+            width=gs.TILE_WIDTH - 1,
+            height=gs.TILE_HEIGHT,
+            resize=True            
+        )
+
+        #This is from gemini as a test
+        # --- ADD THIS CODE BELOW ---
+        # Create a Green Background Block manually
+        bg_surface = pygame.Surface((gs.SIZE, gs.SIZE))
+        bg_surface.fill(gs.PITCH_RED) # Fills the square with Green color
+        
+        # Save it so game.py can find it
+        self.background = {"background": [bg_surface]}
 
     def load_sprite_sheet(self, path, file_name): # Removed width, height arguments
         """Load a sprite sheet.""" 
