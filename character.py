@@ -13,7 +13,7 @@ class Character(pygame.sprite.Sprite):
 
         # CHARACTER ATTRIBUTES 
         self.alive = True
-        self.speed = 3
+        self.speed = 3          #default is 3
 
         # CHARACTER ACTION
         self.action = "walk_left"
