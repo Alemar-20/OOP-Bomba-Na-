@@ -1,7 +1,8 @@
 #This is game.py - the main game logic for Bomberman
 import pygame
 from character import Character
-from blocks import Hard_block
+from blocks import Hard_block, Soft_Block
+from random import choice
 import gamesetting as gs
 
 class Game:
@@ -15,6 +16,7 @@ class Game:
 
     # Groups
     self.hard_blocks = pygame.sprite.Group()
+    self.soft_block = pygame.sprite.Group()
 
     # Level Information
     self.level = 1
@@ -25,11 +27,30 @@ class Game:
 
   def update(self):
     self.hard_blocks.update()
+    self.soft_block.update()
     self.PLAYER.update()
 
 
   def draw(self,window):
+    #Draw the Green Background squares
+    # for row_num, row in enumerate(self.level_matrix): 
+    #   for col_num, in enumerate(row):
+    #     window.blit(self.ASSETS.background["background"][0],
+    #                 (col_num * gs.SIZE, (row_num * gs.SIZE) + gs.Y_OFFSET))
+
+    #Fill the background entirely
+    window.fill(gs.GREY)
+    #This is from gemini as a test
+
+    for row_num, row in enumerate(self.level_matrix): 
+      for col_num, cell in enumerate(row): 
+      # Now it unpacks correctly: col_num gets the index, 'cell' gets the value ("_" or "@")
+       window.blit(self.ASSETS.background["background"][0],
+                  (col_num * gs.SIZE, (row_num * gs.SIZE) + gs.Y_OFFSET))                
+
+
     self.hard_blocks.draw(window)
+    self.soft_block.draw(window)
     self.PLAYER.draw(window)
 
   def generate_level_matrix(self,rows,cols):
@@ -41,6 +62,7 @@ class Game:
         line.append("_")
       matrix.append(line)
     self.insert_hard_block_into_matrix(matrix)  
+    self.insert_soft_block_into_matrix(matrix)
     for row in matrix:
       print(row)
     return matrix
@@ -65,6 +87,25 @@ class Game:
                                               self.hard_blocks,
                                               row_num, col_num)
     return
+  
+  def insert_soft_block_into_matrix(self,matrix):
+    """RANDOMLY INSERT SOFT BLOCKS INTO THE LEVEL MATRIX"""
+
+    for row_num, row in enumerate(matrix):
+       for col_num, col in enumerate(row):
+         if row_num == 0 or row_num == len(matrix) - 1 or \
+            col_num == 0 or col_num == len(row) - 1 or \
+            (row_num % 2 == 0 and col_num % 2 == 0):
+            continue
+         elif row_num in [2,3,4] and col_num in [1,2,3]:
+          continue
+         else:
+           cell = choice(["@","_","_","_"])
+           if cell == "@":
+             cell = Soft_Block(self,self.ASSETS.soft_block["soft_block"],
+                               self.soft_block,row_num,col_num,)
+           matrix[row_num][col_num] = cell
+    return     
     # for row_num, row in enumerate(matrix):
     #   for col_num, col in enumerate(row):
     #     if row_num == 0 or row_num == len(matrix)-1 or \
